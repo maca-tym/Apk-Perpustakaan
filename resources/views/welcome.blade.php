@@ -385,8 +385,6 @@
             </div>
         </div>
         <div class="nav-links">
-            <a href="#">Koleksi Buku</a>
-            <a href="#">Tentang</a>
             <a href="/login" class="btn-login">Masuk</a>
         </div>
     </nav>
@@ -416,7 +414,6 @@
                 <a href="/login" class="cta-primary">
                     Masuk ke sistem →
                 </a>
-                <a href="#" class="cta-ghost">Lihat koleksi buku</a>
             </div>
 
             <div class="stats">
