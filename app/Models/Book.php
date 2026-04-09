@@ -15,7 +15,7 @@ class Book extends Model
         'penulis',
         'penerbit',
         'tahun_terbit',
-        'stok',
+        'status',        // ← tambahkan ini
         'deskripsi',
     ];
 }

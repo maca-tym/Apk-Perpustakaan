@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('penulis');
             $table->string('penerbit')->nullable();
             $table->year('tahun_terbit')->nullable();
-            $table->integer('stok')->default(0);
+            $table->enum('status', ['tersedia', 'dipinjam'])->default('tersedia');
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

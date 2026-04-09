@@ -302,34 +302,23 @@
 
         <div class="nav-group-label">Utama</div>
 
-        <a href="#"
+        <a href="/admin/dashboard"
            class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <span class="icon">🏠</span> Dashboard
         </a>
 
         <div class="nav-group-label">Manajemen</div>
 
-        <a href="#"
-           class="nav-item {{ request()->routeIs('admin.books.*') ? 'active' : '' }}">
+        <a href="{{url('books')}}"
+           class="nav-item {{ request()->routeIs('books.*') ? 'active' : '' }}">
             <span class="icon">📖</span> Kelola Buku
         </a>
 
-        <a href="#"
-           class="nav-item {{ request()->routeIs('admin.transactions.*') ? 'active' : '' }}">
-            <span class="icon">🔄</span> Transaksi
+        <a href="{{url('loan')}}"
+           class="nav-item {{ request()->routeIs('loan.*') ? 'active' : '' }}">
+            <span class="icon">🔄</span> Riwayat
         </a>
 
-        <div class="nav-group-label">Alat</div>
-
-        <a href="#"
-           class="nav-item {{ request()->routeIs('admin.search') ? 'active' : '' }}">
-            <span class="icon">🔍</span> Pencarian
-        </a>
-
-        <a href="#"
-           class="nav-item {{ request()->routeIs('admin.reports') ? 'active' : '' }}">
-            <span class="icon">📊</span> Laporan
-        </a>
 
     </div>
 

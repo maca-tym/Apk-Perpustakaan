@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 
 @section('title', 'Kelola Buku')
 @section('page-header')
@@ -10,17 +10,7 @@
 <div class="max-w-7xl mx-auto">
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-semibold">Daftar Buku</h2>
-        <a href="{{ route('books.create') }}" 
-           class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
-            + Tambah Buku Baru
-        </a>
     </div>
-
-    @if(session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
 
     <div class="card overflow-hidden">
         <table class="w-full">
@@ -32,7 +22,6 @@
                     <th class="px-6 py-3 text-left">Penerbit</th>
                     <th class="px-6 py-3 text-center">Tahun</th>
                     <th class="px-6 py-3 text-center">Status</th>
-                    <th class="px-6 py-3 text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,18 +44,6 @@
                                 Dipinjam
                             </span>
                         @endif
-                    </td>
-
-                    <td class="px-6 py-4 text-center">
-                        <a href="{{ route('books.edit', $book) }}" 
-                           class="text-blue-600 hover:underline mr-4">Edit</a>
-                        
-                        <form action="{{ route('books.destroy', $book) }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button onclick="return confirm('Yakin hapus buku ini?')" 
-                                    class="text-red-600 hover:underline">Hapus</button>
-                        </form>
                     </td>
                 </tr>
                 @empty

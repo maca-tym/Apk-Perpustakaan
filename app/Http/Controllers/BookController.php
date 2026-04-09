@@ -27,7 +27,7 @@ class BookController extends Controller
             'penulis'       => 'required|string|max:255',
             'penerbit'      => 'nullable|string|max:255',
             'tahun_terbit'  => 'nullable|digits:4',
-            'stok'          => 'required|integer|min:0',
+            'status'        => 'required|in:tersedia,dipinjam',
             'deskripsi'     => 'nullable|string',
         ]);
 
@@ -50,7 +50,7 @@ class BookController extends Controller
             'penulis'       => 'required|string|max:255',
             'penerbit'      => 'nullable|string|max:255',
             'tahun_terbit'  => 'nullable|digits:4',
-            'stok'          => 'required|integer|min:0',
+            'status'        => 'required|in:tersedia,dipinjam',
             'deskripsi'     => 'nullable|string',
         ]);
 
@@ -63,7 +63,13 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect()->route('admin.books.index')
+        return redirect()->route('books.index')   // Perbaiki route jika perlu
                          ->with('success', 'Buku berhasil dihapus!');
+    }
+
+    public function indexUser()
+    {
+        $books = Book::latest()->paginate(10);
+        return view('user.book.index', compact('books'));
     }
 }

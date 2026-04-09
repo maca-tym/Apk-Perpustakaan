@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Dashboard') — Pustaka SuperAdmin</title>
+    <title>@yield('title', 'Dashboard') — Pustaka Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:wght@700&display=swap" rel="stylesheet">
@@ -302,18 +302,22 @@
 
         <div class="nav-group-label">Utama</div>
 
-        <a href="/superadmin/dashboard"
-           class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+        <a href="/user/dashboard"
+           class="nav-item {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
             <span class="icon">🏠</span> Dashboard
         </a>
 
         <div class="nav-group-label">Manajemen</div>
 
-        <a href="/superadmin/users"
-           class="nav-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-            <span class="icon">👥</span> Kelola Anggota
+        <a href="{{url('buku')}}"
+           class="nav-item {{ request()->routeIs('buku.*') ? 'active' : '' }}">
+            <span class="icon">📖</span> Kelola Buku
         </a>
 
+        <a href="{{url('loans')}}"
+           class="nav-item {{ request()->routeIs('admin.transactions.*') ? 'active' : '' }}">
+            <span class="icon">🔄</span> Transaksi
+        </a>
     </div>
 
     {{-- Footer / Logout --}}
