@@ -14,20 +14,27 @@ class AuthController extends Controller
     }
 
     // proses login
-    public function login(Request $request)
-    {
-        $data = $request->only('email','password');
+   public function login(Request $request)
+{
+    $data = $request->only('email','password');
 
-        if (Auth::attempt($data)) {
-            if (Auth::user()->role == 'admin') {
-                return redirect('/admin/dashboard');
-            } else {
-                return redirect('/user/dashboard');
-            }
+    if (Auth::attempt($data)) {
+
+        $role = Auth::user()->role;
+
+        if ($role == 'superadmin') {
+            return redirect('/superadmin/dashboard');
+        } 
+        elseif ($role == 'admin') {
+            return redirect('/admin/dashboard');
+        } 
+        else {
+            return redirect('/user/dashboard');
         }
-
-        return back()->with('error','Login gagal');
     }
+
+    return back()->with('error','Login gagal');
+}
 
     // logout
     public function logout()

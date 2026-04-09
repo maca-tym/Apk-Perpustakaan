@@ -13,6 +13,6 @@ Route::get('/admin/users', [UserController::class,'index']);
 Route::get('/admin/users/create', [UserController::class,'create']);
 Route::post('/admin/users/store', [UserController::class,'store']);
 
-// sementara dashboard dulu
+Route::view('/superadmin/dashboard', 'superadmin.dashboard');
 Route::view('/admin/dashboard', 'admin.dashboard');
 Route::view('/user/dashboard', 'user.dashboard');
