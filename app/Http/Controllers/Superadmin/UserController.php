@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,29 +9,26 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // tampil semua user
     public function index()
     {
         $users = User::all();
-        return view('admin.user.index', compact('users'));
+        return view('superadmin.user.index', compact('users'));
     }
 
-    // tampil form tambah user
     public function create()
     {
-        return view('admin.user.create');
+        return view('superadmin.user.create');
     }
 
-    // simpan user
     public function store(Request $request)
     {
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user'
+            'role' => $request->role
         ]);
 
-        return redirect('/admin/users')->with('success','User berhasil dibuat');
+        return redirect('/superadmin/users')->with('success','Berhasil tambah user');
     }
 }
