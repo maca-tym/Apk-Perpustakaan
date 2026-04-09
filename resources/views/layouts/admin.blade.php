@@ -314,11 +314,6 @@
             <span class="icon">📖</span> Kelola Buku
         </a>
 
-        <a href="/admin/users"
-           class="nav-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-            <span class="icon">👥</span> Kelola Anggota
-        </a>
-
         <a href="#"
            class="nav-item {{ request()->routeIs('admin.transactions.*') ? 'active' : '' }}">
             <span class="icon">🔄</span> Transaksi

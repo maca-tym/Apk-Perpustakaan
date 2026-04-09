@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -22,13 +23,21 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            'role'     => ['required', Rule::in(['admin', 'user'])], // Penting!
         ]);
 
-        return redirect('/superadmin/users')->with('success','Berhasil tambah user');
+        User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
+            'role'     => $request->role,   // ← Ini yang menentukan admin atau user
+        ]);
+
+        return redirect('/superadmin/users')
+                ->with('success', 'Berhasil menambahkan ' . ucfirst($request->role));
     }
 }
